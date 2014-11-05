@@ -1,6 +1,9 @@
 set nocompatible              " be iMproved, required
 syntax on
-filetype off                  " required
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+" filetype off                  " required
 
 let mapleader=","
 
@@ -12,13 +15,13 @@ set hidden
 set laststatus=2
 let g:airline_powerline_fonts = 1
 set nowrap        " don't wrap lines
-set tabstop=2     " a tab is four spaces
+set tabstop=2 shiftwidth=2 expandtab
+command! -range=% -nargs=0 Tab2Space execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')'
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
-set cursorline
+" set cursorline
 set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
 set number        " always show line numbers
-set shiftwidth=2  " number of spaces to use for autoindenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
 set ignorecase    " ignore case when searching
@@ -43,7 +46,7 @@ set noswapfile
 filetype plugin indent on
 
 if &t_Co >= 256 || has("gui_running")
-    colorscheme mustang
+  colorscheme ingretu
 endif
 
 if &t_Co > 2 || has("gui_running")
@@ -51,26 +54,30 @@ if &t_Co > 2 || has("gui_running")
     syntax on
 endif
 
-set list
-set listchars=tab:..,trail:.,extends:#,nbsp:.
+" set list
+" set listchars=tab:..,trail:.,extends:#,nbsp:.
 "In some files, like HTML and XML files, tabs are fine and showing them is
 "really annoying, you can disable them easily using an autocmd declaration:
-autocmd filetype html,xml set listchars-=tab:..
+" autocmd filetype html,xml set listchars-=tab:..
+
+" Rspec
+let g:rspec_command = "spec {spec}"
 
 " Unite
 let g:unite_source_history_yank_enable = 1
 "call unite#filters#matcher_default#use(['matcher_fuzzy'])
 nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
-nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+" nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
 nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
 nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
 nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
 nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+nnoremap <leader>f :Unite grep:.<cr>
 if executable('ag')
-	let g:unite_source_grep_command='ag'
-	let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
-	let g:unite_source_grep_recursive_opt=''
-	let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".bundle" --ignore "tmp" --ignore ".git" --ignore ".bzr" --hidden -g ""'
+  let g:unite_source_grep_command='ag'
+  let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
+  let g:unite_source_grep_recursive_opt=''
+  let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".bundle" --ignore "tmp" --ignore ".git" --ignore ".bzr" -g ""'
 endif
 
 " Switch between last two buffers
@@ -81,12 +88,16 @@ noremap <Leader>n :NERDTreeToggle<cr>
 
 set pastetoggle=<F2>
 set mouse=a
-
+" Buffer Bye
+:nnoremap <Leader>q :Bdelete<CR>
 " Easy window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" VimRubySupport
+autocmd FileType ruby compiler ruby
 
 map <leader>bk <Esc>:bd!<cr>
 map <leader>w <Esc>:w!<cr>
@@ -129,7 +140,7 @@ autocmd BufWritePre *.html :%s/\s\+$//e
 autocmd BufWritePre *.scss :%s/\s\+$//e
 autocmd BufWritePre *.slim :%s/\s\+$//e
 
-let g:rspec_command = "Dispatch rspec {spec}"
+let g:rspec_command = "Dispatch spec {spec}"
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -142,13 +153,20 @@ Bundle 'Shougo/neomru.vim'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-rails'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'bling/vim-airline'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'thoughtbot/vim-rspec'
-Bundle 'tpope/vim-dispatch'
-
+Bundle 'cseelus/vim-colors-clearance' 
+Bundle 'vim-scripts/twilight256.vim'
+Bundle 'farseer90718/flattr.vim'
+Bundle 'moll/vim-bbye'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-commentary'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'Shougo/neocomplete'
 " The following are examples of different formats supported.
 " Keep Bundle commands between vundle#begin/end.
 " plugin on GitHub repo
