@@ -166,7 +166,6 @@ Bundle 'moll/vim-bbye'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-commentary'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'Shougo/neocomplete'
 " The following are examples of different formats supported.
 " Keep Bundle commands between vundle#begin/end.
 " plugin on GitHub repo
