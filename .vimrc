@@ -46,7 +46,7 @@ set noswapfile
 filetype plugin indent on
 
 if &t_Co >= 256 || has("gui_running")
-  colorscheme ingretu
+  colorscheme flattr
 endif
 
 if &t_Co > 2 || has("gui_running")
@@ -86,7 +86,7 @@ nnoremap <leader><leader> <C-^>
 " NERDTree
 noremap <Leader>n :NERDTreeToggle<cr>
 
-set pastetoggle=<F2>
+set pastetoggle=<leader>P
 set mouse=a
 " Buffer Bye
 :nnoremap <Leader>q :Bdelete<CR>
@@ -128,6 +128,18 @@ nmap <silent> ,/ :nohlsearch<CR>
 
 "This lets you use w!! to save a read-only file after you opened the file:
 cmap w!! w !sudo tee % >/dev/null
+
+" Move lines up and down
+" Normal mode
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+" Insert mode
+inoremap <C-j> <ESC>:m .+1<CR>==gi
+inoremap <C-k> <ESC>:m .-2<CR>==gi
+" Visual mode
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+
 
 "Rspec config
 map <Leader><Leader>t :call RunCurrentSpecFile()<CR>
