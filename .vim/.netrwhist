@@ -1,10 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/Users/mateusc/Code/develop-GTO'
-let g:netrw_dirhist_2='/Users/mateusc/Code/claims-service'
-let g:netrw_dirhist_3='/Users/mateusc/Code/develop-GTO'
-let g:netrw_dirhist_4='/Users/mateusc/Code/claims-service'
-let g:netrw_dirhist_5='/Users/mateusc/Code/develop-GTO'
-let g:netrw_dirhist_6='/Users/mateusc/Code/claims-service'
-let g:netrw_dirhist_7='/Users/mateusc/Code/develop-GTO'
-let g:netrw_dirhist_8='/Users/mateus/Development/projects/studyhit'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/mateus/Development/projects/ajax_example'
+let g:netrw_dirhist_2='/Users/mateus/Development/projects/studyhit'
+let g:netrw_dirhist_3='/Users/mateus/Development/projects/jrapp'
+let g:netrw_dirhist_4='/Users/mateus/Development/projects/boot-modal'
+let g:netrw_dirhist_5='/Users/mateus/Development/projects/jrapp'
+let g:netrw_dirhist_6='/Users/mateus/Development/projects/jrapp/app/assets/javascripts'

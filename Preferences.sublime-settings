@@ -1,0 +1,15 @@
+{
+  "color_scheme": "Packages/Colorsublime-Themes/TwoStones.tmTheme",
+  "font_face": "Anonymous Pro",
+  "font_size": 14,
+  "ignored_packages":
+  [
+    "Predawn",
+    "Vintage",
+    "Theme - Phoenix"
+  ],
+  "tab_size": 2,
+  "theme": "Tech49.sublime-theme",
+  "translate_tabs_to_spaces": true
+}
+
