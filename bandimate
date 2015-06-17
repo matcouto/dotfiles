@@ -1,0 +1,87 @@
+[14] pry(main)> RulesEngine::Walker.new(set: WorkflowCreator.new(t).perform, context: { 'id' => ' 2' }, event_logger: nil)
+=> #<RulesEngine::Walker:0x007fdf81fdf698
+ @context={"id"=>" 2"},
+ @event_logger=nil,
+ @sets=
+  [#<RulesEngine::Set:0x007fdf81fdf7b0
+    @name="Rule set for email",
+    @root=
+     #<RulesEngine::Condition:0x007fdf81fdf8a0
+      @condition="id=='2'",
+      @name="email",
+      @original=nil,
+      @override=nil,
+      @when_false=nil,
+      @when_true=
+       #<RulesEngine::Outcome:0x007fdf81fdf968
+        @name="template-letter",
+        @reference=nil,
+        @values=
+         [{:reference=>"some reference", :parameter=>"some parameter"}, {:reference=>"sdsgdsg", :parameter=>"some parameter"}]>>>]>
+[15] pry(main)> re = _
+=> #<RulesEngine::Walker:0x007fdf81fdf698
+ @context={"id"=>" 2"},
+ @event_logger=nil,
+ @sets=
+  [#<RulesEngine::Set:0x007fdf81fdf7b0
+    @name="Rule set for email",
+    @root=
+     #<RulesEngine::Condition:0x007fdf81fdf8a0
+      @condition="id=='2'",
+      @name="email",
+      @original=nil,
+      @override=nil,
+      @when_false=nil,
+      @when_true=
+       #<RulesEngine::Outcome:0x007fdf81fdf968
+        @name="template-letter",
+        @reference=nil,
+        @values=
+         [{:reference=>"some reference", :parameter=>"some parameter"}, {:reference=>"sdsgdsg", :parameter=>"some parameter"}]>>>]>
+[16] pry(main)> re.walk
+=> nil
+[17] pry(main)> RulesEngine::Walker.new(set: WorkflowCreator.new(t).perform, context: { 'id' => '2' }, event_logger: nil)
+=> #<RulesEngine::Walker:0x007fdf81d09b30
+ @context={"id"=>"2"},
+ @event_logger=nil,
+ @sets=
+  [#<RulesEngine::Set:0x007fdf81d09bf8
+    @name="Rule set for email",
+    @root=
+     #<RulesEngine::Condition:0x007fdf81d09c70
+      @condition="id=='2'",
+      @name="email",
+      @original=nil,
+      @override=nil,
+      @when_false=nil,
+      @when_true=
+       #<RulesEngine::Outcome:0x007fdf81d09cc0
+        @name="template-letter",
+        @reference=nil,
+        @values=
+         [{:reference=>"some reference", :parameter=>"some parameter"}, {:reference=>"sdsgdsg", :parameter=>"some parameter"}]>>>]>
+[18] pry(main)> re = RulesEngine::Walker.new(set: WorkflowCreator.new(t).perform, context: { 'id' => '2' }, event_logger: nil)
+=> #<RulesEngine::Walker:0x007fdf88c1f7b8
+ @context={"id"=>"2"},
+ @event_logger=nil,
+ @sets=
+  [#<RulesEngine::Set:0x007fdf88c1f9c0
+    @name="Rule set for email",
+    @root=
+     #<RulesEngine::Condition:0x007fdf88c1fa88
+      @condition="id=='2'",
+      @name="email",
+      @original=nil,
+      @override=nil,
+      @when_false=nil,
+      @when_true=
+       #<RulesEngine::Outcome:0x007fdf88c1fb78
+        @name="template-letter",
+        @reference=nil,
+        @values=
+         [{:reference=>"some reference", :parameter=>"some parameter"}, {:reference=>"sdsgdsg", :parameter=>"some parameter"}]>>>]>
+[19] pry(main)> re.walk
+=> #<RulesEngine::Outcome:0x007fdf88c1fb78
+ @name="template-letter",
+ @reference=nil,
+ @values=[{:reference=>"some reference", :parameter=>"some parameter"}, {:reference=>"sdsgdsg", :parameter=>"some parameter"}]>
